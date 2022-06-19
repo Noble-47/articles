@@ -32,18 +32,18 @@ class Point:
                 return self._coordinates[l]
         raise AttributeError(msg)
 
-#    def __setattr__(self, name, value):
- #       cls = type(self)
-  #      if len(name) == 1:
-   #         if self._label is not None and name in self._label:
-    #            err = f"readonly attribute {name}"
-     #       elif name.islower():
-      #          err = f"cannot set attribute 'a' to 'z' in {cls.__name__}"
-       #     else:
-        #        err = ""
-         #   if err:
-          #      raise AttributeError(err)
-       # super().__setattr__(name, value)
+    def __setattr__(self, name, value):
+        cls = type(self)
+        if len(name) == 1:
+            if self._label is not None and name in self._label:
+                err = f"readonly attribute {name}"
+            elif name.islower():
+                err = f"cannot set attribute 'a' to 'z' in {cls.__name__}"
+            else:
+                err = ""
+            if err:
+                raise AttributeError(err)
+        super().__setattr__(name, value)
 
 
 class PointIterator:
