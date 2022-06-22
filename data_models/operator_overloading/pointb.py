@@ -1,4 +1,5 @@
 from numbers import Integral
+import math
 import itertools
 
 
@@ -167,6 +168,7 @@ class Point:
 
     def __bool__(self):
         return bool(abs(self))
+
 
 class PointIterator:
     def __init__(self, coordinates):
