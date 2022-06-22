@@ -169,6 +169,11 @@ class Point:
     def __bool__(self):
         return bool(abs(self))
 
+    def __eq__(self, other):
+        if not isinstance(other, Point):
+            return False
+        return len(self) == len(other) and any(a == b for a, b in zip(self, other))
+
 
 class PointIterator:
     def __init__(self, coordinates):
