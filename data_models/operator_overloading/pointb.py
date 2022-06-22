@@ -134,11 +134,19 @@ class Point:
         return math.sqrt(sum(x**2 for x in self))
 
     def __complex__(self):
-        return complex(self.x, self.y)
+        try:
+            x, y = self._label[0], self._label[1]
+            return complex(self.x, self.y)
+        except:
+            raise Exception(
+                "Point instance must have at least two coordinates to be converted to complex form"
+            )
 
     def __mul__(self, n: int):
         # scalar multiplication
-        return SimpleVector(n * x for x in self)
+        if isinstance(n, Integral):
+            return Point(n * x for x in self)
+        return NotImplemented
 
     def __rmul__(self, n):
         return self * n
