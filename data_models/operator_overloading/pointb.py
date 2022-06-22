@@ -165,6 +165,8 @@ class Point:
         # for Python.__version__ >= 3.5
         return self @ other
 
+    def __bool__(self):
+        return bool(abs(self))
 
 class PointIterator:
     def __init__(self, coordinates):
